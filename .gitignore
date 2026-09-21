@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+web/node_modules/
+extension/node_modules/
+
+# Next.js / builds
+web/.next/
+web/out/
+web/build/
+**/dist/
+**/.vercel/
+
+# Env / secrets — never commit
+.env
+.env.*
+!.env.example
+web/.env
+web/.env.local
+web/.env*.local
+extension/.env
+extension/.env.*
+*.pem
+
+# Logs / OS / IDE
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.tsbuildinfo
+web/tsconfig.tsbuildinfo
+
+# Misc
+my website plan/

@@ -36,17 +36,3 @@ yarn-error.log*
 # vercel
 .vercel
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-@"
-node_modules/
-.next/
-.env
-.env.local
-.env*.local
-extension/.env
-web/.env.local
-*.log
-.DS_Store
-"@ | Out-File -Encoding utf8 .gitignore
