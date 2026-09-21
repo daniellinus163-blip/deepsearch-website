@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepSearch</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <p class="eyebrow">Freelance</p>
+      <h1>DeepSearch</h1>
+      <p class="status" id="status">Checking page…</p>
+
+      <section id="auth-section" class="section hidden">
+        <p class="section-label">Sign in to save research</p>
+        <input id="email" type="email" placeholder="Email" autocomplete="username" />
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+          autocomplete="current-password"
+        />
+        <button type="button" id="sign-in">Sign in</button>
+      </section>
+
+      <section id="session-section" class="section hidden">
+        <p class="meta" id="user-email"></p>
+        <button type="button" id="sign-out" class="secondary">Sign out</button>
+      </section>
+
+      <section class="section">
+        <button type="button" id="extract">Extract listing</button>
+        <button type="button" id="save" class="secondary" disabled>Save to workspace</button>
+        <button type="button" id="open-app" class="secondary">Open research</button>
+      </section>
+
+      <pre id="preview" class="preview hidden"></pre>
+      <p class="footnote">
+        Reads publicly visible page data only — not private ranking or search APIs.
+      </p>
+    </main>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

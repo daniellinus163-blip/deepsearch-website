@@ -1,0 +1,636 @@
+Freelance DeepSearch — Full Build Roadmap
+Product structure
+                    FREELANCE DEEPSEARCH
+                           │
+             ┌─────────────┴─────────────┐
+             │                           │
+       WEB DASHBOARD               BROWSER EXTENSION
+             │                           │
+             └─────────────┬─────────────┘
+                           │
+                    ANALYSIS ENGINE
+                           │
+              ┌────────────┼────────────┐
+              │            │            │
+          Marketplace   Intent       Opportunity
+             Data       Engine         Engine
+              │            │            │
+              └────────────┼────────────┘
+                           │
+                    Recommendation
+                           │
+                     Gig Builder
+
+I would use 16 phases.
+
+PHASE 1 — Project Foundation
+
+Build the basic application architecture.
+
+Build
+Next.js web application
+TypeScript
+Tailwind
+shadcn/ui
+Supabase connection
+Authentication
+Environment variable structure
+Basic navigation
+Dashboard shell
+Extension project structure
+Chrome Manifest V3
+Development configuration
+Main routes
+/
+ /login
+ /dashboard
+ /research
+ /opportunities
+ /projects
+ /settings
+Extension
+extension/
+├── manifest.json
+├── popup/
+├── content/
+├── background/
+├── icons/
+└── styles/
+
+Goal: Both the web application and Chrome extension can run independently.
+
+PHASE 2 — User Account & Workspace
+
+Create the freelancer's workspace.
+
+Features
+Sign up
+Login
+Logout
+Profile
+Freelancer name
+Marketplace selection
+Skills
+Services
+Saved research
+Saved opportunities
+Database
+
+Create tables such as:
+
+users
+profiles
+services
+research_sessions
+saved_opportunities
+
+Goal: Every freelancer has their own workspace.
+
+PHASE 3 — Service Discovery Engine
+
+This is where the product begins becoming unique.
+
+User enters:
+
+"I want to sell Roblox character design"
+
+The system creates the initial service profile.
+
+Analyze
+Main Service
+    ↓
+Service Category
+    ↓
+Sub-services
+    ↓
+Possible Buyer Types
+    ↓
+Possible Use Cases
+
+Example:
+
+Roblox Character Design
+
+├── Dynamic Head
+├── Furry Avatar
+├── UGC Character
+├── YouTube Character
+├── VTuber Character
+└── Game Character
+
+At this stage, don't use AI yet.
+
+Build the underlying structure.
+
+PHASE 4 — Marketplace Research Engine
+
+Now make the system understand marketplace listings.
+
+The extension should be able to identify information from supported marketplace pages that is publicly available and permitted to access.
+
+Extract structured information such as:
+
+Title
+Category
+Tags where visible
+Description
+Price
+Reviews where visible
+Seller information where visible
+Delivery time
+Packages
+FAQ
+
+Store normalized research data.
+
+Important
+
+Do not pretend this gives you Fiverr's private search data or secret ranking algorithm.
+
+You're analyzing observable marketplace information.
+
+PHASE 5 — Search & Keyword Intelligence
+
+Now build your keyword system.
+
+Instead of simply:
+
+"Here are 20 keywords."
+
+Create:
+
+Keyword hierarchy
+CORE
+   ↓
+PRIMARY
+   ↓
+SECONDARY
+   ↓
+LONG-TAIL
+   ↓
+BUYER-INTENT
+
+For example:
+
+Roblox character
+        ↓
+Custom Roblox character
+        ↓
+Roblox furry avatar
+        ↓
+Roblox dynamic head
+        ↓
+Custom Roblox character for YouTube
+
+Each keyword receives attributes such as:
+
+relevance
+specificity
+competition signal
+buyer intent
+relationship to service
+PHASE 6 — Buyer Intent Engine
+
+This is one of your core features.
+
+Instead of asking:
+
+"What keyword is popular?"
+
+Ask:
+
+"What does the buyer actually want?"
+
+Create intent categories:
+
+GENERAL
+SPECIFIC SERVICE
+FEATURE
+USE CASE
+PROBLEM
+AUDIENCE
+OUTCOME
+PURCHASE-READY
+
+Example:
+
+"Roblox character for YouTube"
+
+could be classified as:
+
+Audience: YouTube creator
+Use case: Content creation
+Service: Character design
+Intent: Purchase-oriented
+PHASE 7 — Root Need Engine
+
+Now go deeper.
+
+For every discovered search/service:
+
+SEARCH TERM
+     ↓
+BUYER INTENT
+     ↓
+BUYER PROBLEM
+     ↓
+ROOT NEED
+     ↓
+DESIRED OUTCOME
+
+Example:
+
+"Roblox furry avatar"
+
+        ↓
+
+Wants a custom avatar
+
+        ↓
+
+Doesn't want a generic character
+
+        ↓
+
+Needs a recognizable online identity
+
+        ↓
+
+Wants an avatar suitable for their content/community
+
+The interface should explain:
+
+WHAT
+
+What the term means.
+
+WHY
+
+Why a buyer might use it.
+
+WHERE
+
+Where the freelancer should use it.
+
+WHO
+
+What type of buyer it attracts.
+
+PHASE 8 — Competition Intelligence
+
+Now analyze competing listings.
+
+Build metrics around observable data.
+
+For example:
+
+Competition Overview
+
+Listings analyzed: 87
+
+Common positioning:
+Custom character
+Avatar
+Furry
+Dynamic Head
+
+Common price range:
+...
+
+Common delivery:
+...
+
+Repeated buyer language:
+...
+
+Missing positioning:
+...
+
+Don't call this Fiverr's official competition score.
+
+Call it something like:
+
+DeepSearch Competition Signal
+
+because it is your own analytical metric.
+
+PHASE 9 — Opportunity Gap Engine
+
+This is potentially the most valuable part.
+
+Compare:
+
+BUYER DEMAND SIGNALS
+          +
+COMPETITOR POSITIONING
+          ↓
+     OPPORTUNITY GAPS
+
+Example:
+
+Opportunity
+
+YouTube-focused Roblox characters
+
+Buyer intent: High
+Competition signal: Low
+Specificity: High
+Service fit: High
+
+Then explain:
+
+Why this opportunity was identified.
+
+This explanation is important.
+
+Don't just give users a number.
+
+PHASE 10 — Service Positioning Engine
+
+Now tell the freelancer:
+
+How should you position your service?
+
+Generate a positioning structure:
+
+TARGET BUYER
+        ↓
+PROBLEM
+        ↓
+DESIRED RESULT
+        ↓
+SERVICE
+        ↓
+DIFFERENTIATOR
+
+Example:
+
+For Roblox creators who need a recognizable character for their content, offer custom character + dynamic-head customization rather than positioning the service as generic Roblox modeling.
+
+This is where your product starts becoming a strategy tool, not merely an SEO tool.
+
+PHASE 11 — Gig Builder
+
+Now build the actual Fiverr listing assistant.
+
+Generate/assist with:
+
+Title
+Tags
+Description
+Packages
+FAQs
+Requirements
+Delivery structure
+Buyer-focused positioning
+
+But don't just automatically generate everything.
+
+Show the reason behind each recommendation.
+
+Example:
+
+TITLE
+
+Custom Roblox Character With Dynamic Head
+
+WHY
+
+Targets the core service while highlighting
+a specific buyer requirement discovered during research.
+PHASE 12 — Gig Health Analyzer
+
+Allow a freelancer to paste or analyze their existing listing.
+
+The system checks:
+
+TITLE
+✓ Service clarity
+✓ Search relevance
+✓ Buyer intent
+
+DESCRIPTION
+✓ Problem
+✓ Outcome
+✓ Differentiation
+
+TAGS
+✓ Relevance
+✓ Specificity
+✓ Duplication
+
+PACKAGES
+✓ Clear differences
+✓ Buyer use cases
+
+FAQ
+✓ Objections
+✓ Requirements
+
+Instead of one mysterious score, show specific findings and fixes.
+
+PHASE 13 — Browser Extension UI
+
+Now make the extension genuinely useful inside marketplaces.
+
+When the freelancer visits a supported marketplace page:
+
+┌──────────────────────────┐
+│ DEEPSEARCH               │
+├──────────────────────────┤
+│                          │
+│ Page detected            │
+│                          │
+│ Analyze this market      │
+│                          │
+│ [ DEEP DIVE ]            │
+│                          │
+└──────────────────────────┘
+
+After analysis:
+
+MARKET SIGNALS
+
+Buyer Intent
+Competition
+Opportunity Gaps
+Related Services
+
+[EXPLORE]
+
+The extension communicates with your web application's backend.
+
+PHASE 14 — OpenAI Intelligence Layer
+
+Only now would I add the OpenAI API.
+
+This is where you use AI for things that are difficult to handle with normal rules.
+
+For example:
+
+Marketplace Data
+       ↓
+Your Analysis Engine
+       ↓
+OpenAI
+       ↓
+Semantic Interpretation
+       ↓
+Natural-language Explanation
+
+AI can help with:
+
+semantic grouping
+root-need analysis
+buyer-language interpretation
+positioning suggestions
+listing rewriting
+explanations
+opportunity summaries
+
+Your API key stays on the server, never inside the extension.
+
+PHASE 15 — 4-Day Launch System
+
+Now build your idea of helping someone launch quickly.
+
+Call it something like:
+
+4-Day Service Launch
+Day 1
+
+Discover
+
+market
+buyer
+intent
+opportunity
+Day 2
+
+Position
+
+service
+title
+tags
+packages
+differentiation
+Day 3
+
+Optimize
+
+description
+FAQs
+images
+pricing
+objections
+Day 4
+
+Launch & Monitor
+
+publish
+track observable signals
+monitor inquiries
+review performance
+
+Do not tell users:
+
+"You will get an order in 4 days."
+
+Instead:
+
+"Launch your service with a structured 4-day optimization plan."
+
+PHASE 16 — Analytics & Marketplace Expansion
+
+Once Fiverr works properly, add:
+
+Fiverr
+   ↓
+Upwork
+   ↓
+Freelancer
+   ↓
+Contra
+   ↓
+Other marketplaces
+
+But each marketplace gets its own analysis adapter.
+
+Don't force the Fiverr system onto Upwork.
+
+For example:
+
+MarketplaceAdapter
+        │
+ ┌──────┼────────┐
+ │      │        │
+Fiverr Upwork  Contra
+ │      │        │
+Search Jobs   Services
+ │      │        │
+Tags    Skills Positioning
+FINAL PRODUCT
+
+When everything is finished, the user experience should look like this:
+
+                 FREELANCER
+                     │
+                     ↓
+            "I want to sell..."
+                     │
+                     ↓
+              SERVICE RESEARCH
+                     │
+                     ↓
+             MARKETPLACE DATA
+                     │
+          ┌──────────┴──────────┐
+          ↓                     ↓
+    BUYER INTENT           COMPETITION
+          │                     │
+          └──────────┬──────────┘
+                     ↓
+              OPPORTUNITY GAPS
+                     ↓
+                 ROOT NEED
+                     ↓
+               POSITIONING
+                     ↓
+                GIG BUILDER
+                     ↓
+              4-DAY LAUNCH PLAN
+                     ↓
+              MONITOR & IMPROVE
+The order I recommend for Cursor
+
+Don't paste all 16 phases into Cursor at once.
+
+Start with:
+
+Phase 1 → test → Phase 2 → test → Phase 3 → test...
+
+And every phase should tell Cursor:
+
+Do not redesign or rewrite existing functionality. Inspect the current project first. Implement only this phase. Keep all existing functionality working.
+
+That will make the project much easier to control.
+
+One more important architectural decision
+
+I would make the web application the brain and the Chrome extension the eyes/hands.
+
+                 WEB APP
+             "THE BRAIN"
+                  │
+       Analysis / Database /
+       Intelligence / Users
+                  │
+                  ↕
+            BACKEND API
+                  │
+                  ↕
+          CHROME EXTENSION
+             "THE TOOL"
+                  │
+                  ↓
+         Marketplace pages
